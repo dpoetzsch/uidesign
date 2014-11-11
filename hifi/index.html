@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Language" content="en-us" />
     
     <link rel="stylesheet" media="screen" href="main.css" />
+    <script src="main.js" type="text/javascript"></script>
     
     <title>CoCo</title>
   </head>
@@ -18,18 +19,24 @@
       
       <div id="searchbardiv">
         <form action="">
-          <input type="text" name="search" value="Search..." />
+          <input type="text" name="search" value="Search..." id="search-entry" />
         </form>
-        <a href="hierarchy.html">Browse Hierarchy</a>
+        <a href="hierarchy.html" id="hierarchy-link">&#9654; Browse Hierarchy</a> <!--&#x25BC; triangle down -->
       </div>
       
       <div id="logindiv">
-        <form action="">
-          <p>Username</p>
-          <input type="text" name="username" value="Username" />
-          <p>Password</p>
-          <input type="text" name="password" value="********" />
-        </form>
+        <div id="login-link">
+          <a href="javascript:;" onclick="loginClicked();">Sign In</a>
+        </div>
+        <div id="login-fields">
+          <form action="">
+            <p>Username</p>
+            <input type="text" name="username" value="Username" />
+            <p>Password</p>
+            <input type="text" name="password" value="********" />
+            <p><a href="admin-view-folder.html">Sign In</a></p>
+          </form>
+        </div>
       </div>
     </div>
   </body>

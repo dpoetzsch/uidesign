@@ -3,7 +3,7 @@
 #headerdiv {
   width: 100%;
   height: 100%;
-  padding: 25px;
+  padding-top: 25px;
 }
 
 #logodiv, #searchbardiv, #logindiv {
@@ -15,28 +15,42 @@
 #logodiv {
   width: 100px;
   height: 100px;
-  background: #ff9999;
+  margin-left: 25px;
+  background: #555;
 }
 
 #searchbardiv {
   margin-left: 25px;
-  width: 50%;
-  background: #99ff99;
+  margin-top: 10px;
+  width: 40%;
 }
 
 #hierarchy-link {
-  padding-left: 20px;
+  margin-left: 20px;
 }
 
 #logindiv {
   float: right;
-  background: #9999ff;
-  width: 25%;
+  width: 250px;
 }
 
 #login-fields {
   visibility: hidden;
-  padding-left: 25px;
+  border: solid;
+  border-width: 1px;
+  margin-top: 10px;
+  margin-right: 25px;
+  padding: 10px;
+}
+
+/* add space between login fields */
+.login-field + .login-field {
+  margin-top: 7px;
+}
+
+#login-link {
+  text-align: right;
+  padding-right: 25px;
 }
 
 #search-entry {

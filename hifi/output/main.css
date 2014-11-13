@@ -84,5 +84,7 @@
 }
 
 .comment-area {
-  visibility: hidden;
+  /*visibility: hidden;*/
+  display: none;
+  height: auto !important;
 }

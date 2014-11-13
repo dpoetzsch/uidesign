@@ -1,0 +1,20 @@
+<div class="itemdiv">
+  <div class="item-icon-div">
+    <img src="img/$ITEMTYPE$.png" alt="$ITEMTYPE$" />
+  </div>
+  
+  <div class="item-desc-div">
+    <a href="">$TITLE$</a><br />
+    <a href="javascript:;" id="comment-link-$ITEM-IDX$" class="comment-link" onclick="commentClicked($ITEM-IDX$);">&#9654; Comments ($COMM-NUM$)</a>
+    <a href="" class="comment-link">Download</a>
+    <div id="comment-area-$ITEM-IDX$" class="comment-area">
+      <form action="">
+        <p>
+          <input type="text" value="New Comment" id="add-comment-entry-$ITEM-IDX$" />
+          <input type="button" value="Submit" id="add-comment-button-$ITEM-IDX$" />
+        </p>
+      </form>
+      $COMMENTS-AREA$
+    </div>
+  </div>
+</div>

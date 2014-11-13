@@ -82,3 +82,7 @@
 .item-desc-div {
   margin-left: 25px;
 }
+
+.comment-area {
+  visibility: hidden;
+}

@@ -58,3 +58,27 @@
   width: 65%;
   margin: 10px;
 }
+
+#main-area {
+  margin-top: 50px;
+}
+
+/**
+ * Search Result + Hierarchy Item style
+ */
+.item-icon-div, .item-desc-div {
+  display: inline-block;
+  *display: inline;
+  vertical-align: top;
+}
+
+.item-icon-div {
+  width: 25px;
+  height: 25px;
+  margin-left: 25px;
+  background: #555;
+}
+
+.item-desc-div {
+  margin-left: 25px;
+}

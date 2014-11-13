@@ -4,6 +4,7 @@ require "fileutils"
 
 template = File.read("template.html")
 ITEMLIST = File.read("itemlist.html")
+ITEMLIST_COMMENT = File.read("itemlist-comment.html")
 COMMENT_DIV = File.read("comment-div.html")
 
 def convert_itemlist(il)
@@ -22,7 +23,12 @@ def convert_itemlist(il)
   
   html = ""
   list.each_with_index do |item, idx|
-    t = ITEMLIST.gsub("$ITEMTYPE$", item[0])
+    if item[0] == "comment"
+      t = ITEMLIST_COMMENT.clone
+    else
+      t = ITEMLIST.clone
+    end
+    t.gsub!("$ITEMTYPE$", item[0])
     t.gsub!("$TITLE$", item[1])
     t.gsub!("$COMM-NUM$", item[2].length.to_s)
     t.gsub!("$ITEM-IDX$", idx.to_s)

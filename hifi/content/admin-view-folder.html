@@ -1,2 +1,26 @@
 $HEADER$
-<title>Admin: View Folder</title>
+<script src="hierarchy.js" type="text/javascript"></script>
+<script src="admin.js" type="text/javascript"></script>
+<script type="text/javascript"><!--
+window.onload = function() { admin('hierarchy.html'); change_hierarchy_link(); }
+--></script>
+<title>View Folder 'Software Engineering' (admin)</title>
+
+$CONTENTPANE$
+=BEGIN BREADCRUMP
+folder root / folder Software Engineering
+=END BREADCRUMP
+=BEGIN ITEMLIST
+* folder User Interface Design
+  I loved User Interface Design -- 12. Nov 2014
+* folder Programming 1
+  I love it! -- 24. Dec 2001
+  Meh... -- 16. Apr 2000
+  Other comment -- 15. Sept 2003
+  More comments -- 15. Sept 2003
+  Yet another comment -- 15. Sept 2003
+  not enough comments -- 15. Sept 2003
+=END ITEMLIST
+
+$SIDEPANE$
+<p>foo</p>

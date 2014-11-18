@@ -8,6 +8,7 @@ ITEMLIST_COMMENT = File.read("itemlist-comment.html")
 COMMENT_DIV = File.read("comment-div.html")
 BREADCRUMP = File.read("breadcrump.html")
 BREADCRUMP_ITEM = File.read("breadcrump-item.html")
+METAINFO = File.read("meta-info.html")
 
 def parse_item(item)
   type = item.split[0]
@@ -75,6 +76,22 @@ def convert_itemlist(il)
   return html
 end
 
+def convert_metainfo(mi)
+  lines = mi.strip.split("\n")
+  
+  html = METAINFO.gsub("$UPLOADER$", lines[0])
+  html.gsub!("$DATE$", lines[1])
+  
+  comments = ""
+  lines[2..-1].each_with_index do |comment, cidx|
+    text, date = comment.split(" -- ")
+    comments += COMMENT_DIV.gsub("$TEXT$", text).gsub("$DATE$", date)
+  end
+  html.gsub!("$COMMENTS-AREA$", comments)
+  
+  return html
+end
+
 def preproc(str, key)
   l = str.split(/^=BEGIN #{key}$/)
   if l.length > 1
@@ -117,6 +134,7 @@ Dir["content/*.html"].each { |f|
     # preprocess value
     v = preproc(v, "BREADCRUMP") { |bc| convert_breadcrump(bc) }
     v = preproc(v, "ITEMLIST") { |il| convert_itemlist(il) }
+    v = preproc(v, "META-INFO") { |il| convert_metainfo(il) }
   
     html.gsub!(k, v)
   }

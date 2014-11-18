@@ -1,0 +1,24 @@
+task list for CoCo
+
+teacher tasks:
+	upload file
+	change file
+	delete file
+	rename file
+	create folder
+	upload folder
+	delete folder
+	rename folder
+	
+public tasks:
+	find a file by navigating through the hierarchy
+	find a file by using the quicksearch
+	download a file
+	download a folder
+	comment on a file	
+	comment on a folder
+	find a comment by using the quicksearch
+	like a comment on facebook
+	like a file on facebook
+	move upwards in the folder hierarchy
+

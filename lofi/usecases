@@ -1,0 +1,18 @@
+Use Cases for CoCo
+
+teacher point of view:
+	upload, re-upload (files or whole folder)
+	delete (files or whole folder)
+	create folder	
+	comments on folders (editional information for the course)
+	
+public point of view:
+	browse folder hierarchy
+	find-as-you-type-search for materials and comments
+	comments on files
+	download files and folders
+	facebook-like-button
+	
+	
+functions for the future:
+	rights management for folders and files

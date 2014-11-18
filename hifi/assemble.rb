@@ -6,15 +6,44 @@ template = File.read("template.html")
 ITEMLIST = File.read("itemlist.html")
 ITEMLIST_COMMENT = File.read("itemlist-comment.html")
 COMMENT_DIV = File.read("comment-div.html")
+BREADCRUMP = File.read("breadcrump.html")
+BREADCRUMP_ITEM = File.read("breadcrump-item.html")
+
+def parse_item(item)
+  type = item.split[0]
+  name = item.split[1..-1].join(" ")
+  url = ""
+  
+  if name =~ /^(.+) = (.+?)$/
+    name = $1
+    url = $2
+  end
+  
+  return [type, name, url]
+end
+
+def convert_breadcrump(bc)
+  items = []
+  bc.split(" / ").each do |item|
+    type, name, url = parse_item(item)
+    
+    html = BREADCRUMP_ITEM.gsub("$TYPE$", type)
+    html.gsub!("$NAME$", name)
+    html.gsub!("$URL$", url)
+    items.push(html)
+  end
+  return BREADCRUMP.gsub("$PATH$", items.join(" / "))
+end
 
 def convert_itemlist(il)
   # convert to list
   list = []
   cur = nil
   il.each_line { |l|
-    if l[0] == "*"
+    if l[0..1] == "* "
       # type, name, comments list
-      cur = [l.split[1], l.split[2..-1].join(" "), []]
+      type, name, url = parse_item(l[2..-1])
+      cur = [type, name, url, []]
       list.push cur
     elsif not cur.nil?
       cur[-1].push(l.strip.split(" -- "))
@@ -30,11 +59,12 @@ def convert_itemlist(il)
     end
     t.gsub!("$ITEMTYPE$", item[0])
     t.gsub!("$TITLE$", item[1])
-    t.gsub!("$COMM-NUM$", item[2].length.to_s)
+    t.gsub!("$URL$", item[2])
+    t.gsub!("$COMM-NUM$", item[-1].length.to_s)
     t.gsub!("$ITEM-IDX$", idx.to_s)
     
     comments = ""
-    item[2].each_with_index do |comment, cidx|
+    item[-1].each_with_index do |comment, cidx|
       comments += COMMENT_DIV.gsub("$TEXT$", comment[0]).gsub("$DATE$", comment[1])
     end
     t.gsub!("$COMMENTS-AREA$", comments)
@@ -45,15 +75,15 @@ def convert_itemlist(il)
   return html
 end
 
-def preproc_itemlist(str)
-  l = str.split(/^=BEGIN ITEMLIST$/)
+def preproc(str, key)
+  l = str.split(/^=BEGIN #{key}$/)
   if l.length > 1
     nstr = l[0]
     l[1..-1].each { |e|
-      l2 = e.split(/^=END ITEMLIST$/)
+      l2 = e.split(/^=END #{key}$/)
       raise unless l2.length == 2
       
-      nstr += convert_itemlist(l2[0])
+      nstr += yield(l2[0])
       nstr += l2[1]
     }
     return nstr
@@ -85,7 +115,8 @@ Dir["content/*.html"].each { |f|
   html = template.clone
   repl_map.each { |k, v|
     # preprocess value
-    v = preproc_itemlist(v)
+    v = preproc(v, "BREADCRUMP") { |bc| convert_breadcrump(bc) }
+    v = preproc(v, "ITEMLIST") { |il| convert_itemlist(il) }
   
     html.gsub!(k, v)
   }

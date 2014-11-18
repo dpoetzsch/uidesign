@@ -96,6 +96,10 @@
 /**
  * Search Result + Hierarchy Item style
  */
+.itemdiv {
+  margin-bottom: 30px;
+}
+ 
 .item-icon, .item-desc-div {
   display: inline-block;
   *display: inline;
@@ -112,10 +116,28 @@
   margin-left: 25px;
 }
 
+.item-title {
+  font-size: 14pt;
+}
+
+.item-actions-div {
+  margin-top: 3px;
+  font-size: 10pt;
+}
+
+.comment-link+.download-link {
+  margin: 15px;
+}
+
 .comment-area {
   /*visibility: hidden;*/
   display: none;
   height: auto !important;
+}
+
+.new-comment-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .comment {

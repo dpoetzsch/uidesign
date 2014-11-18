@@ -36,6 +36,14 @@ def convert_breadcrump(bc)
   return BREADCRUMP.gsub("$PATH$", items.join(" / "))
 end
 
+def create_commentsarea(clines)
+  comments = ""
+  clines.each_with_index do |comment, cidx|
+    comments += COMMENT_DIV.gsub("$TEXT$", comment[0]).gsub("$DATE$", comment[1])
+  end
+  return comments
+end
+
 def convert_itemlist(il)
   # convert to list
   list = []
@@ -63,12 +71,7 @@ def convert_itemlist(il)
     t.gsub!("$URL$", item[2])
     t.gsub!("$COMM-NUM$", item[-1].length.to_s)
     t.gsub!("$ITEM-IDX$", idx.to_s)
-    
-    comments = ""
-    item[-1].each_with_index do |comment, cidx|
-      comments += COMMENT_DIV.gsub("$TEXT$", comment[0]).gsub("$DATE$", comment[1])
-    end
-    t.gsub!("$COMMENTS-AREA$", comments)
+    t.gsub!("$COMMENTS-AREA$", create_commentsarea(item[-1]))
     
     html += t
   end
@@ -81,14 +84,7 @@ def convert_metainfo(mi)
   
   html = METAINFO.gsub("$UPLOADER$", lines[0])
   html.gsub!("$DATE$", lines[1])
-  
-  comments = ""
-  lines[2..-1].each_with_index do |comment, cidx|
-    text, date = comment.split(" -- ")
-    comments += COMMENT_DIV.gsub("$TEXT$", text).gsub("$DATE$", date)
-  end
-  html.gsub!("$COMMENTS-AREA$", comments)
-  
+  html.gsub!("$COMMENTS-AREA$", create_commentsarea(lines[2..-1].map{|c|c.split(" -- ")}))
   return html
 end
 

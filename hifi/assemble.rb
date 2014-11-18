@@ -82,9 +82,10 @@ end
 def convert_metainfo(mi)
   lines = mi.strip.split("\n")
   
-  html = METAINFO.gsub("$UPLOADER$", lines[0])
-  html.gsub!("$DATE$", lines[1])
-  html.gsub!("$COMMENTS-AREA$", create_commentsarea(lines[2..-1].map{|c|c.split(" -- ")}))
+  html = METAINFO.gsub("$NAME$", lines[0])
+  html.gsub!("$UPLOADER$", lines[1])
+  html.gsub!("$DATE$", lines[2])
+  html.gsub!("$COMMENTS-AREA$", create_commentsarea(lines[3..-1].map{|c|c.split(" -- ")}))
   return html
 end
 

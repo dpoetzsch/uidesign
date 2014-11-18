@@ -118,9 +118,55 @@
   height: auto !important;
 }
 
+.comment {
+  border: solid;
+  border-width: 1px;
+  border-color: #999999;
+  margin-top: 2px;
+  padding: 4px;
+}
+
+.comment-date {
+  font-size: 8pt;
+}
+
+/*
+ * breadcrump
+ */
 .breadcrump-icon {
   width: 18px;
   height: 18px;
 }
 
+#breadcrump-div {
+  margin-bottom: 30px;
+}
 
+#breadcrump-title {
+  font-style: italic;
+}
+
+#breadcrump {
+  font-size: 10pt;
+}
+
+/*
+ * meta info view
+ */
+#uploaderp {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.meta-caption {
+  font-weight: bold;
+}
+
+.meta-value {
+  font-style: italic;
+}
+
+#comments-section {
+  width: 50%;
+  margin-top: 30px;
+}

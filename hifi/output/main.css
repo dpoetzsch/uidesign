@@ -66,17 +66,16 @@
 /**
  * Search Result + Hierarchy Item style
  */
-.item-icon-div, .item-desc-div {
+.item-icon, .item-desc-div {
   display: inline-block;
   *display: inline;
   vertical-align: top;
 }
 
-.item-icon-div {
-  width: 25px;
-  height: 25px;
+.item-icon {
+  width: 35px;
+  height: 35px;
   margin-left: 25px;
-  background: #555;
 }
 
 .item-desc-div {
@@ -87,4 +86,9 @@
   /*visibility: hidden;*/
   display: none;
   height: auto !important;
+}
+
+.breadcrump-icon {
+  width: 18px;
+  height: 18px;
 }

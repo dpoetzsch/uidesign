@@ -29,8 +29,13 @@
   margin-left: 20px;
 }
 
+/*
+ * Login Area
+ */
+
 #logindiv {
-  float: right;
+  position: absolute;
+  right: 0;
   width: 250px;
 }
 
@@ -59,8 +64,33 @@
   margin: 10px;
 }
 
+/**
+ * Main Area
+ */
+
 #main-area {
+  width: 100%;
   margin-top: 50px;
+  margin-left: 35px;
+}
+
+#side-pane, #content-pane {
+  display: inline-block;
+  *display: inline;
+  vertical-align: top;
+}
+
+#content-pane {
+  width: 75%;
+}
+
+#side-pane {
+  width: 200px;
+  margin-right: 100px;
+  padding: 10px;
+  padding-bottom: 15px;
+  float: right;
+  position: relative;
 }
 
 /**
@@ -92,3 +122,5 @@
   width: 18px;
   height: 18px;
 }
+
+
